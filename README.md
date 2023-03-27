@@ -19,11 +19,10 @@ This project is licensed under the terms of the MIT license. See the [LICENSE](.
 
 If you find our work useful, please consider citing our paper:
 
-"""
+```bibtex
 @inproceedings{ikehata2023sdmunips,
-title={Scalable, Detailed and Mask-free Universal Photometric Stereo},
-author={Satoshi Ikehata},
-booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
-year={2023}
+  title={Scalable, Detailed and Mask-free Universal Photometric Stereo},
+  author={Satoshi Ikehata},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year={2023}
 }
-"""
