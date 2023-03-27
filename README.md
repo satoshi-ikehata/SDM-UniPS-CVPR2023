@@ -19,16 +19,11 @@ This project is licensed under the terms of the MIT license. See the [LICENSE](.
 
 If you find our work useful, please consider citing our paper:
 
+"""
 @inproceedings{ikehata2023sdmunips,
 title={Scalable, Detailed and Mask-free Universal Photometric Stereo},
 author={Satoshi Ikehata},
 booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
 year={2023}
 }
-
-## Acknowledgements
-
-We would like to express our gratitude to the numerous researchers and developers whose work has inspired and paved the way for SDM-UniPS. We also appreciate the support and feedback from the computer vision community during the development of this project.
-
-## Changelog
-For a detailed list of changes and updates, please refer to the [Changelog](./CHANGELOG.md).
+"""
