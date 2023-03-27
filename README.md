@@ -1,6 +1,6 @@
 # Scalable, Detailed, and Mask-free Universal Photometric Stereo
 
-![CVPR2023 Logo](./images/cvpr2023_logo.png)
+![CVPR2023 Logo](./.images/teaser.jpg)
 
 **Author:** Satoshi Ikehata  
 **Conference:** CVPR2023 (highlight)
