@@ -11,7 +11,7 @@
 
 ## Getting Started
 
-Under construction
+Coming Soon!
 
 ## License
 
