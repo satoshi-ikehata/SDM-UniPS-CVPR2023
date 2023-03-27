@@ -1,7 +1,7 @@
 # Scalable, Detailed, and Mask-free Universal Photometric Stereo
 
 <p align="center">
-  <img src="./.images/teaser.jpg" width="480px">
+  <img src="./.images/teaser2.jpg" width="480px">
 </p>
 
 **Author:** Satoshi Ikehata  
