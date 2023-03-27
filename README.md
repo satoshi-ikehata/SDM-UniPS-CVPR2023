@@ -1,4 +1,4 @@
-# Scalable, Detailed, and Mask-free Universal Photometric Stereo
+# Scalable, Detailed, and Mask-free Universal Photometric Stereo (CVPR2023 Hightlight)
 
 <p align="center">
   <img src="./.images/teaser2.jpg" width="800px">
