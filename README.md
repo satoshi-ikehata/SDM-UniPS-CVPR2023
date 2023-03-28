@@ -8,7 +8,7 @@
 
 **Conference:** IEEE/CVF Computer Vision and Pattern Recognition (CVPR), 2023
 
-**SDM-UniPS**, Scalable, Mask-free, and Universal Photometric Stereo Network. Our approach can recover astonishingly intricate surface normal maps, rivaling the quality of 3-D scanners, even when images are captured under unknown, spatially-varying lighting conditions in uncontrolled environments.
+SDM-UniPS is Scalable, Mask-free, and Universal Photometric Stereo Networks. Our approach can recover astonishingly intricate surface normal maps, rivaling the quality of 3-D scanners, even when images are captured under unknown, spatially-varying lighting conditions in uncontrolled environments.
 
 ## Getting Started
 
