@@ -130,6 +130,9 @@ To output .gif video:
 ```
  python sdm_unips/relighting.py --datadir ./YOUR_SESSION_NAME/results/OBJECT_NAME.data --format gif
 ```
+## Quantitative Evaluation on DiLiGenT
+If you want to compute the mean angular errors between predicted and ground truth surface normal maps in DiLiGenT benchmark, simply organize the data as in others and put 'Normal_gt.png' in the directory. The code automatically computes the MAE and displays it. Please note that there are randomized processes in the estimation framework, and the results change with every prediction.
+
 
 ## Important Notice
 This repository is for testing purposes only. I do not currently plan to release the training script and training data, unlike my previous projects. Please refrain from sending email requests for these resources.
