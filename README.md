@@ -120,8 +120,15 @@ The results will be saved in `YOUR_SESSION_NAME/results`. You will find a normal
 
 You can also use the provided code (`relighting.py`) for relighting the object under novel directional lights based on the recovered attributes. Follow the instructions displayed at the end of the prompt to use it. It should look like this.
 
+To output .avi video:
 ```
- python source/relighting.py --datadir ./YOUR_SESSION_NAME/results/OBJECT_NAME.data
+ python source/relighting.py --datadir ./YOUR_SESSION_NAME/results/OBJECT_NAME.data --format avi
+```
+
+To output .gif video:
+
+```
+ python source/relighting.py --datadir ./YOUR_SESSION_NAME/results/OBJECT_NAME.data --format gif
 ```
 
 ## Important Notice

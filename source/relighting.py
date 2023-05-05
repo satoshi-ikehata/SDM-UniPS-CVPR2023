@@ -18,7 +18,7 @@ import imageio
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--datadir')
-parser.add_argument('--format', default='gif', choices=['gif', 'avi'])
+parser.add_argument('--format', default='avi', choices=['gif', 'avi'])
 
 def create_gif_from_numpy_arrays(image_list, gif_filename, duration):
     """
