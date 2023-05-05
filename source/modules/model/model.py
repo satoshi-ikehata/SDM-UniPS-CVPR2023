@@ -216,6 +216,11 @@ class Net(nn.Module):
         num_set > 1 : scenes in sets are dependend with each other (e.g., same geometry w/ different material)
         """
 
+        if torch.sum(N) > 0:
+            gt_available = True
+        else:
+            gt_available = False
+
         """init"""
         B, C, H, W, Nmax = I.shape
 
@@ -297,6 +302,8 @@ class Net(nn.Module):
         rout = rout.permute(0, 2, 1).reshape(B, 1, H, W)
         mout = mout.permute(0, 2, 1).reshape(B, 1, H, W)
         mae, emap = angular_error(nout.cpu(), N_dec.cpu(), mask = M_dec.cpu())
+        if self.target == 'normal' and gt_available:
+            print(f"Mean angular error is {mae:.2f} degrees")
 
         emap = emap.squeeze().detach()
         thresh = 90

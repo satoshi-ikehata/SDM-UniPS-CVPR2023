@@ -15,7 +15,7 @@ class dataio(data.Dataset):
         data_root = args.test_dir
         extension = args.test_ext
         self.numberOfImageBuffer = args.max_image_num
-        self.suffix= args.test_suffix
+        self.prefix= args.test_prefix
         self.mask_margin = args.mask_margin
         self.outdir = args.session_name
         self.data_root = data_root
@@ -40,7 +40,7 @@ class dataio(data.Dataset):
 
         objid = index_
         objdir = self.objlist[objid]
-        self.data.load(objdir, suffix = self.suffix, max_image_resolution = self.max_image_resolution)
+        self.data.load(objdir, prefix = self.prefix, max_image_resolution = self.max_image_resolution)
         img = self.data.I.transpose(2,0,1,3) # c, h, w, N
         numberOfImages = self.data.I.shape[3]           
         nml = self.data.N.transpose(2,0,1) # 3, h, w

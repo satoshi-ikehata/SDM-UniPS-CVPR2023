@@ -29,7 +29,7 @@ class dataloader():
             os.makedirs(outdir, exist_ok=True)
             cv2.imwrite(f'{outdir}/tiled.png', (255 * img_tiled[:,:,::-1]).astype(np.uint8))
     
-    def load(self, objdir, suffix, margin = 0, max_image_resolution = 2048, aug=[]):
+    def load(self, objdir, prefix, margin = 0, max_image_resolution = 2048, aug=[]):
 
         self.objname = re.split(r'\\|/',objdir)[-1]
         self.data_workspace = f'{self.outdir}/results/{self.objname}'
@@ -39,7 +39,7 @@ class dataloader():
 
 
         directlist = []
-        [directlist.append(p) for p in glob.glob(objdir + '/%s[!.txt]' % suffix, recursive=True) if os.path.isfile(p)]
+        [directlist.append(p) for p in glob.glob(objdir + '/%s[!.txt]' % prefix, recursive=True) if os.path.isfile(p)]
         directlist = sorted(directlist)
 
         if len(directlist) == 0:

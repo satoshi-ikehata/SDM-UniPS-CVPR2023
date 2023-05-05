@@ -27,7 +27,7 @@ parser.add_argument('--max_image_res', type=int, default=4096)
 parser.add_argument('--max_image_num', type=int, default=10)
 parser.add_argument('--test_ext', default='.data')
 parser.add_argument('--test_dir', default='DefaultTest')
-parser.add_argument('--test_suffix', default='L*')
+parser.add_argument('--test_prefix', default='L*')
 parser.add_argument('--mask_margin', type=int, default=8)
 
 # Network Configuration

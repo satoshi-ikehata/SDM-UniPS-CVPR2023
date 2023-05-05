@@ -72,7 +72,7 @@ class builder():
             """Scalable Reconstruction"""   
             with torch.no_grad():       
                 if self.args.scalable:    
-                    patch_size = 512                
+                    patch_size = 512               
                     patches_I = decompose_tensors.divide_tensor_spatial(I.permute(0,4,1,2,3).reshape(-1, C, H, W), block_size=patch_size, method='tile_stride')
                     patches_I = patches_I.reshape(B, Nimg, -1, C, patch_size, patch_size).permute(0, 2, 3, 4, 5, 1)
                     sliding_blocks = patches_I.shape[1]
@@ -125,7 +125,7 @@ class builder():
                     rough = merged_tensor_rough.squeeze()
                     metal = merged_tensor_metal.squeeze()
                 else:
-                    print(f"Recovering {self.args.target} map(s)")
+                    print(f"Recovering {self.args.target} map(s) 1 / 1")
                     if 'normal' in self.args.target:
                         _, _, nout, _, _, _  = self.net_nml(I, N, M, nImgArray.reshape(-1,1), decoder_resolution=testdata.data.h * torch.ones(I.shape[0],1), canonical_resolution=canonical_resolution* torch.ones(I.shape[0],1))
                         nml = (nout * M).squeeze().permute(1,2,0).cpu().detach()

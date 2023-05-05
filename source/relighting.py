@@ -14,10 +14,26 @@ import argparse
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+import imageio
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--datadir')
+parser.add_argument('--format', default='gif', choices=['gif', 'avi'])
 
+def create_gif_from_numpy_arrays(image_list, gif_filename, duration):
+    """
+    image_list: list of numpy arrays representing images
+    gif_filename: str, output filename for the gif
+    duration: float, duration between frames in seconds
+    """
+    # Normalize images and convert them to 8-bit format
+    normalized_images = [((img - img.min()) * (255 / (img.max() - img.min()))).astype(np.uint8) for img in image_list]
+
+    # Convert images to PIL.Image format
+    pil_images = [imageio.core.util.Array(img) for img in normalized_images]
+
+    # Save as GIF
+    imageio.mimsave(gif_filename, pil_images, duration=duration)
 
 def print_progress_bar(iteration, total, prefix='', suffix='', decimals=1, length=50, fill=' '):
     
@@ -60,6 +76,7 @@ def create_video(images, output_file, fps=30, size=None):
         height, width, _ = images[0].shape
         size = (width, height)
 
+    
     # Define the codec and create VideoWriter object
     fourcc = cv2.VideoWriter_fourcc(*'XVID')
     out = cv2.VideoWriter(output_file, fourcc, fps, size, isColor=True)
@@ -89,8 +106,11 @@ def main():
 
 
     height, width = nml.shape[-2:]
-    max_size = 2048
-    if np.max([height, width]) > 2048:
+    if args.format == 'gif':
+        max_size = 512
+    if args.format == 'avi':
+        max_size = 2048
+    if np.max([height, width]) > max_size:
         aspect_ratio = width / height if width > height else height / width
         if height > width:
             new_height = max_size
@@ -121,8 +141,15 @@ def main():
         img_stack.append((255.0 * rendered).astype(np.uint8))
 
     # Create a video from the list of images
-    output_file = f'{args.datadir}/output.avi'
-    create_video(img_stack, output_file)
+    if args.format == 'avi':
+        output_file = f'{args.datadir}/output.avi'
+        create_video(img_stack, output_file)
+
+    if args.format == 'gif':
+        output_gif = f'{args.datadir}/output.gif'
+        frame_duration = 0.05  # seconds
+        create_gif_from_numpy_arrays(img_stack, output_gif, frame_duration)
+
 
 
 if __name__ == '__main__':
