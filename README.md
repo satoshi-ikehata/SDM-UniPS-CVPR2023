@@ -53,19 +53,19 @@ The network has been successfully tested on the following configurations:
 ## Dataset Preparation
 To run the universal photometric stereo network, you need shading images and an optional binary object mask. The object should be illuminated under arbitrary lighting sources, but shading variations should be sufficient (weak shading variations may result in poor results).
 
-Organize your test data as follows (prefix):
+Organize your test data as follows (prefix "L" and suffix ".data" can be modified in main.py):
 
 ```
 YOUR_DATA_PATH
 ├── A (Suffix: default ".data")
 │   ├── mask.png (optional)
-│   ├── [Prefix (default: "0" (Train), "L" (Test))] imgfile1
-│   ├── [Prefix (default: "0" (Train), "L" (Test))] imgfile2
+│   ├── [Prefix (default: "L")] imgfile1
+│   ├── [Prefix (default: "L")] imgfile2
 │   └── ...
 └── B (Suffix: default ".data")
     ├── mask.png (optional)
-    ├── [Prefix (default: "0" (Train), "L" (Test))] imgfile1
-    ├── [Prefix (default: "0" (Train), "L" (Test))] imgfile2
+    ├── [Prefix (default: "L")] imgfile1
+    ├── [Prefix (default: "L")] imgfile2
     └── ...
 ```
 
