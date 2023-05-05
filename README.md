@@ -142,7 +142,7 @@ Copyright (c) [2023] [Satoshi Ikehata]
 
 ## Citation
 
-If you find our work useful, please consider citing our paper:
+If you find this repository useful, please consider citing this paper:
 
 ```bibtex
 @inproceedings{ikehata2023sdmunips,
