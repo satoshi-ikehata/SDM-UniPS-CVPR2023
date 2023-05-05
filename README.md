@@ -18,7 +18,7 @@ SDM-UniPS is a Scalable, Mask-free, and Universal Photometric Stereo Network. Th
 Following instructions below.
 
 ### Step 2: Image Acquisition
-Take multiple images under different arbitrary lighting conditoins
+Take multiple images under different arbitrary lighting conditions
 <p align="center">
   <img src="./.images/input.png" width="400px">
 </p>
@@ -83,7 +83,7 @@ checkpoint
 ```
 
 ## Running the Test
-You can simply try the code using the datasets in my paper from [this link](https://www.dropbox.com/sh/afm4lkiz0iu1un3/AACfdKB66wl8iyFtJ4fzynGYa?dl=0).
+You can simply try the code using some datasets in my paper from [this link](https://www.dropbox.com/sh/afm4lkiz0iu1un3/AACfdKB66wl8iyFtJ4fzynGYa?dl=0).
 
 To run the test, execute `main.py` with the following command:
 
@@ -96,7 +96,7 @@ or
 ```
 python source/main.py --session_name YOUR_SESSION_NAME --test_dir YOUR_DATA_PATH --pretrained YOUR_CHECKPOINT_PATH --scalable
 ```
-'scalable' option is a powerful feature not included in the original framework. At the cost of some accuracy and computational expense, it enables normal and brdf estimation at any resolution with constant GPU memory consumption. For example, in the original implementation, inputting ten 2048x2048 resolution images consumes over 40GB of memory, but using this option reduces consumption to around 10GB. This consumption is proportional to the number of images but does not vary with resolution. The trick is very simple and I will add some details in the future. If you input images larger than 1024 x 1024, I highly recommend you to use this option.
+The 'scalable' option is a powerful feature not included in the original paper. At the cost of some accuracy and computational expense, it enables normal and brdf estimation at any resolution with constant GPU memory consumption. For example, in the original implementation, inputting ten 2048x2048 resolution images consumes over 40GB of memory, but using this option reduces consumption to around 10GB. This consumption is proportional to the number of images but does not vary with resolution. The trick is very simple and I will add some details in the future. If you input images larger than 1024 x 1024, I highly recommend you to use this option.
 
 If you don't need to recover either of normal map or brdf maps, please use specific options as
 
@@ -110,7 +110,7 @@ or
 python source/main.py --session_name YOUR_SESSION_NAME --test_dir YOUR_DATA_PATH --pretrained YOUR_CHECKPOINT_PATH --target brdf
 ```
 
-By default, the maximum number of images to load is set to 10, and the maximum resolution is set to 4096x4096, regardless of the number of images or the resolution in the folder. If you want to change these numbers, please specify options as follow.
+By default, the maximum number of images to load is set to 10, and the maximum resolution is set to 4096x4096, regardless of the number of images or the resolution in the data directory. If you want to change these numbers, please specify options as follow.
 
 ```
 python source/main.py --session_name YOUR_SESSION_NAME --test_dir YOUR_DATA_PATH --pretrained YOUR_CHECKPOINT_PATH --max_image_res 10000 --max_image_num 100
