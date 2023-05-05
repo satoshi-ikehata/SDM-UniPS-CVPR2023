@@ -134,8 +134,8 @@ To output .gif video:
 If you want to compute the mean angular errors between predicted and ground truth surface normal maps in DiLiGenT benchmark, simply organize the data as in others and put 'Normal_gt.png' in the directory. The code automatically computes the MAE and displays it. Please note that there are randomized processes in the estimation framework, and the results change with every prediction.
 
 <p align="center">
-  <img src=".images/harvest.png" width="400px">
-  <img src=".images/harvest.gif" width="400px">
+  <img src="./.images/harvest.png" width="400px">
+  <img src="./.images/harvest.gif" width="400px">
 </p>
 
 
