@@ -10,11 +10,30 @@
 **Conference:** IEEE/CVF Computer Vision and Pattern Recognition (CVPR), 2023
 
 **Abstract:**
-SDM-UniPS is Scalable, Mask-free, and Universal Photometric Stereo Networks. Our method can recover astonishingly intricate surface normal maps, rivaling the quality of 3-D scanners, even when images are captured under unknown, spatially-varying lighting conditions in uncontrolled environments. I provide not only a learning model for normal estimation but also for BRDF parameters (base color, roughness, metallic), as shown in Supplementary. Additionally, I offer code for rendering under a directional light source from both the normal and BRDF parameters.
+SDM-UniPS is a Scalable, Mask-free, and Universal Photometric Stereo Network. This method can recover astonishingly intricate surface normal maps, rivaling the quality of 3D scanners, even when images are captured under unknown, spatially-varying lighting conditions in uncontrolled environments. I provide not only a model for normal map estimation, but also one for BRDF parameters (base color, roughness, and metallic), as shown in the Supplementary section. Additionally, I offer code for creating a video from frames rendered under novel directional light sources using both the normal and BRDF parameters.
 
-## Example of Results
-Given multiple images under different arbitrary lighting conditoins, you will get corresponding surface normal map and BRDF paramters as illustrated below:
+## 🚀 Steps to Get Started
 
+### Step 1: Install Dependencies
+Instructions for installing necessary dependencies.
+
+### Step 2: Image Acquisition
+Take multiple images under different arbitrary lighting conditoins
+<p align="center">
+  <img src="./.images/input.png" width="800px">
+</p>
+
+### Step 3: Run the Code
+Run main.py to recover the surface normal map and BRDF maps (base color, roughness, metallic)
+<p align="center">
+  <img src="./.images/sample.png" width="800px">
+</p>
+
+### Step 4: Novel Relighting
+Run relighting.py to render images under novel directional lightings based on recovered normal map and BRDF maps
+<p align="center">
+  <img src="./.images/output.gif" width="800px">
+</p>
 
 ## Required Dependencies
 To successfully run the universal photometric stereo network, ensure that your system has the following dependencies installed:
@@ -23,6 +42,7 @@ To successfully run the universal photometric stereo network, ensure that your s
 - PyTorch
 - OpenCV (cv2)
 - Einops
+- imageio (only for relighting)
 
 ## Tested Configurations
 The network has been successfully tested on the following configurations:
