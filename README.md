@@ -88,32 +88,32 @@ You can simply try the code using some datasets in my paper from [this link](htt
 To run the test, execute `main.py` with the following command:
 
 ```
-python source/main.py --session_name YOUR_SESSION_NAME --test_dir YOUR_DATA_PATH --pretrained YOUR_CHECKPOINT_PATH
+python sdm_unips/main.py --session_name YOUR_SESSION_NAME --test_dir YOUR_DATA_PATH --pretrained YOUR_CHECKPOINT_PATH
 ```
 
 or
 
 ```
-python source/main.py --session_name YOUR_SESSION_NAME --test_dir YOUR_DATA_PATH --pretrained YOUR_CHECKPOINT_PATH --scalable
+python sdm_unips/main.py --session_name YOUR_SESSION_NAME --test_dir YOUR_DATA_PATH --pretrained YOUR_CHECKPOINT_PATH --scalable
 ```
 The 'scalable' option is a powerful feature not included in the original paper. At the cost of some accuracy and computational expense, it enables normal and brdf estimation at any resolution with constant GPU memory consumption. For example, in the original implementation, inputting ten 2048x2048 resolution images consumes over 40GB of memory, but using this option reduces consumption to around 10GB. This consumption is proportional to the number of images but does not vary with resolution. The trick is very simple and I will add some details in the future. If you input images larger than 1024 x 1024, I highly recommend you to use this option.
 
 If you don't need to recover either of normal map or brdf maps, please use specific options as
 
 ```
-python source/main.py --session_name YOUR_SESSION_NAME --test_dir YOUR_DATA_PATH --pretrained YOUR_CHECKPOINT_PATH --target normal
+python sdm_unips/main.py --session_name YOUR_SESSION_NAME --test_dir YOUR_DATA_PATH --pretrained YOUR_CHECKPOINT_PATH --target normal
 ```
 
 or
 
 ```
-python source/main.py --session_name YOUR_SESSION_NAME --test_dir YOUR_DATA_PATH --pretrained YOUR_CHECKPOINT_PATH --target brdf
+python sdm_unips/main.py --session_name YOUR_SESSION_NAME --test_dir YOUR_DATA_PATH --pretrained YOUR_CHECKPOINT_PATH --target brdf
 ```
 
 By default, the maximum number of images to load is set to 10, and the maximum resolution is set to 4096x4096, regardless of the number of images or the resolution in the data directory. If you want to change these numbers, please specify options as follow.
 
 ```
-python source/main.py --session_name YOUR_SESSION_NAME --test_dir YOUR_DATA_PATH --pretrained YOUR_CHECKPOINT_PATH --max_image_res 10000 --max_image_num 100
+python sdm_unips/main.py --session_name YOUR_SESSION_NAME --test_dir YOUR_DATA_PATH --pretrained YOUR_CHECKPOINT_PATH --max_image_res 10000 --max_image_num 100
 ```
 
 The results will be saved in `YOUR_SESSION_NAME/results`. You will find a normal map and BRDF maps (base color, roughness, and metallic).
@@ -122,13 +122,13 @@ You can also use the provided code (`relighting.py`) for relighting the object u
 
 To output .avi video:
 ```
- python source/relighting.py --datadir ./YOUR_SESSION_NAME/results/OBJECT_NAME.data --format avi
+ python sdm_unips/relighting.py --datadir ./YOUR_SESSION_NAME/results/OBJECT_NAME.data --format avi
 ```
 
 To output .gif video:
 
 ```
- python source/relighting.py --datadir ./YOUR_SESSION_NAME/results/OBJECT_NAME.data --format gif
+ python sdm_unips/relighting.py --datadir ./YOUR_SESSION_NAME/results/OBJECT_NAME.data --format gif
 ```
 
 ## Important Notice
