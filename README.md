@@ -15,12 +15,12 @@ SDM-UniPS is a Scalable, Mask-free, and Universal Photometric Stereo Network. Th
 ## 🚀 Steps to Get Started
 
 ### Step 1: Install Dependencies
-Instructions for installing necessary dependencies.
+Following instructions below.
 
 ### Step 2: Image Acquisition
 Take multiple images under different arbitrary lighting conditoins
 <p align="center">
-  <img src="./.images/input.png" width="800px">
+  <img src="./.images/input.png" width="400px">
 </p>
 
 ### Step 3: Run the Code
@@ -32,7 +32,7 @@ Run main.py to recover the surface normal map and BRDF maps (base color, roughne
 ### Step 4: Novel Relighting
 Run relighting.py to render images under novel directional lightings based on recovered normal map and BRDF maps
 <p align="center">
-  <img src="./.images/output.gif" width="800px">
+  <img src="./.images/output.gif" width="400px">
 </p>
 
 ## Required Dependencies
