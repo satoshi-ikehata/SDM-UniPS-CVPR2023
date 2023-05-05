@@ -211,10 +211,6 @@ class Net(nn.Module):
         
         decoder_resolution = decoder_resolution[0,0].cpu().numpy().astype(np.int32)
         canonical_resolution = canonical_resolution[0,0].cpu().numpy().astype(np.int32)
-        """
-        num_set is 1: each dataset is independent
-        num_set > 1 : scenes in sets are dependend with each other (e.g., same geometry w/ different material)
-        """
 
         if torch.sum(N) > 0:
             gt_available = True
