@@ -96,7 +96,7 @@ or
 ```
 python sdm_unips/main.py --session_name YOUR_SESSION_NAME --test_dir YOUR_DATA_PATH --checkpoint YOUR_CHECKPOINT_PATH --scalable
 ```
-The 'scalable' option is a powerful feature not included in the original paper. At the cost of some accuracy and computational expense, it enables normal and brdf estimation at any resolution with constant GPU memory consumption. For example, in the original implementation, inputting ten 2048x2048 resolution images consumes over 40GB of memory, but using this option reduces consumption to around 10GB. This consumption is proportional to the number of images but does not vary with resolution. The trick is very simple and I will add some details in the future. If you input images larger than 1024 x 1024, I highly recommend you to use this option.
+The 'scalable' option is a powerful feature not included in the original paper. At the cost of some accuracy and computational expense, it enables normal and brdf estimation at any resolution with constant GPU memory consumption. For example, in the original implementation, inputting ten 2048x2048 resolution images consumes over 40GB of memory, but using this option reduces consumption to around 10GB. This consumption is proportional to the number of images but does not vary with resolution. The trick is very simple and I will add some details in the future. If you input images larger than 1024x1024, I highly recommend you to use this option.
 
 If you don't need to recover either of normal map or brdf maps, please use specific options as
 
@@ -132,6 +132,11 @@ To output .gif video:
 ```
 ## Quantitative Evaluation on DiLiGenT
 If you want to compute the mean angular errors between predicted and ground truth surface normal maps in DiLiGenT benchmark, simply organize the data as in others and put 'Normal_gt.png' in the directory. The code automatically computes the MAE and displays it. Please note that there are randomized processes in the estimation framework, and the results change with every prediction.
+
+<p align="center">
+  <img src=".images/harvest.png" width="400px">
+  <img src=".images/harvest.gif" width="400px">
+</p>
 
 
 ## Important Notice

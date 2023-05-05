@@ -299,7 +299,7 @@ class Net(nn.Module):
         mout = mout.permute(0, 2, 1).reshape(B, 1, H, W)
         mae, emap = angular_error(nout.cpu(), N_dec.cpu(), mask = M_dec.cpu())
         if self.target == 'normal' and gt_available:
-            print(f"Mean angular error is {mae:.2f} degrees")
+            print(f"Mean angular error is {mae:.2f} degrees\n")
 
         emap = emap.squeeze().detach()
         thresh = 90
