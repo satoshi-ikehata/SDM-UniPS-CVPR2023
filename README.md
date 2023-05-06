@@ -26,8 +26,8 @@ Capture multiple images under various arbitrary lighting conditions. Unlike exis
   <img src="./.images/tools.png" width="400px">
 </p>
 
-### Step 3: Run the Code
-Run main.py to recover the surface normal map and BRDF parameter maps (base color, roughness, metallic).
+### Step 3: Normal and BRDF Maps Recovery
+Run main.py to recover the surface normal map and/or BRDF parameter maps (base color, roughness, metallic).
 <p align="center">
   <img src="./.images/sample.png" width="800px">
 </p>
