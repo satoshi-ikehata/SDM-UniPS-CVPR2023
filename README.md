@@ -10,7 +10,7 @@
 **Conference:** IEEE/CVF Computer Vision and Pattern Recognition (CVPR), 2023
 
 **Abstract:**
-SDM-UniPS is a Scalable, Mask-free, and Universal Photometric Stereo Network. This method can recover astonishingly intricate surface normal maps, rivaling the quality of 3D scanners, even when images are captured under unknown, spatially-varying lighting conditions in uncontrolled environments. I provide not only a model for normal map estimation, but also one for BRDF parameters (base color, roughness, and metallic), as shown in the Supplementary section. Additionally, I offer code for creating a video from frames rendered under novel directional light sources using both the normal and BRDF parameters.
+SDM-UniPS is a Scalable, Mask-free, and Universal Photometric Stereo Network. This method can recover remarkably intricate surface normal maps, rivaling the quality of 3D scanners, even when images are captured under unknown, spatially-varying lighting conditions in uncontrolled environments. I provide not only a model for normal map estimation but also one for BRDF parameters (base color, roughness, and metallic), as shown in the appendix. Additionally, I offer the code for creating a video from frames rendered under novel directional light sources using both the normal and BRDF parameters.
 
 ## 🚀 Steps to Get Started
 
