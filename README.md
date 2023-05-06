@@ -20,7 +20,7 @@ SDM-UniPS is a Scalable, Mask-free, and Universal Photometric Stereo Network. Th
 Following instructions below.
 
 ### Step 2: Image Acquisition
-Capture multiple images under various arbitrary lighting conditions. Unlike existing photometric stereo methods, there is no assumption of directional lighting. However, please ensure that there is sufficient shading variation in all parts of the images.
+Capture multiple images under various arbitrary lighting conditions with a fixed camera. Unlike existing photometric stereo methods, there is no assumption of directional lighting. However, please ensure that there is sufficient shading variation in all parts of the images. You can find tips for capture in the appendix of the paper.
 <p align="center">
   <img src="./.images/input.png" width="400px">
   <img src="./.images/tools.png" width="400px">
@@ -56,7 +56,7 @@ The network has been successfully tested on the following configurations:
 ## Dataset Preparation
 To run the universal photometric stereo network, you need shading images and an optional binary object mask. The object should be illuminated under arbitrary lighting sources, but shading variations should be sufficient (weak shading variations may result in poor results).
 
-Organize your test data as follows (prefix "L" and suffix ".data" can be modified in main.py). You can process multiple datasets (A, B, ...) simultaneously, which is convenient if you are evaluating the method on the DiLiGenT benchmark.:
+Organize your test data as follows (prefix "L" and suffix ".data" can be modified in main.py). You can process multiple datasets (A, B, ...) simultaneously, which is convenient if you are evaluating the method on the DiLiGenT benchmark.
 
 ```
 YOUR_DATA_PATH
