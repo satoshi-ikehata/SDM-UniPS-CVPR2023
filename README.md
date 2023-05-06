@@ -20,9 +20,10 @@ SDM-UniPS is a Scalable, Mask-free, and Universal Photometric Stereo Network. Th
 Following instructions below.
 
 ### Step 2: Image Acquisition
-Take multiple images under different arbitrary lighting conditions
+Take multiple images under different arbitrary lighting conditions.
 <p align="center">
   <img src="./.images/input.png" width="400px">
+  <img src="./.images/tool.png" width="400px">
 </p>
 
 ### Step 3: Run the Code
