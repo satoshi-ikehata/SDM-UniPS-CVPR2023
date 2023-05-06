@@ -32,8 +32,8 @@ Run main.py to recover the surface normal map and BRDF parameter maps (base colo
   <img src="./.images/sample.png" width="800px">
 </p>
 
-### Step 4: Novel Relighting
-Run relighting.py to render images under novel directional lightings based on recovered normal map and BRDF parameter maps
+### Step 4: Novel Relighting (Optional)
+Run relighting.py to render images under novel directional lightings based on recovered normal map and BRDF parameter maps.
 <p align="center">
   <img src="./.images/output.gif" width="400px">
 </p>
