@@ -56,7 +56,7 @@ The network has been successfully tested on the following configurations:
 ## Dataset Preparation
 To run the universal photometric stereo network, you need shading images and an optional binary object mask. The object should be illuminated under arbitrary lighting sources, but shading variations should be sufficient (weak shading variations may result in poor results).
 
-Organize your test data as follows (prefix "L" and suffix ".data" can be modified in main.py):
+Organize your test data as follows (prefix "L" and suffix ".data" can be modified in main.py). You can process multiple datasets (A, B, ...) simultaneously, which is convenient if you are evaluating the method on the DiLiGenT benchmark.:
 
 ```
 YOUR_DATA_PATH
