@@ -78,7 +78,7 @@ Checkpoints of the network parameters for recovering both normal maps and BRDF m
 To use the pre-trained models, extract them as follows:
 
 ```
-checkpoint
+YOUR_CHECKPOINT_PATH
 ├── normal
 │   └── nml.pytmodel
 └── brdf
@@ -87,7 +87,7 @@ checkpoint
 
 ## Running the Test
 You can simply try the code using some datasets in my paper from [this link](https://www.dropbox.com/sh/afm4lkiz0iu1un3/AACfdKB66wl8iyFtJ4fzynGYa?dl=0).
-As an alternative option, you can also use the dataset of my past research, UniPS. [this link](https://satoshi-ikehata.github.io/cvpr2022/univps_cvpr2022.html)
+As an alternative option, you can also use the dataset of my past research, UniPS. [this link](https://satoshi-ikehata.github.io/cvpr2022/univps_cvpr2022.html).
 
 To run the test, execute `main.py` with the following command:
 
@@ -100,7 +100,7 @@ or
 ```
 python sdm_unips/main.py --session_name YOUR_SESSION_NAME --test_dir YOUR_DATA_PATH --checkpoint YOUR_CHECKPOINT_PATH --scalable
 ```
-The 'scalable' option is a powerful feature not included in the original paper. At the cost of some accuracy and computational expense, it enables normal and brdf estimation at any resolution with constant GPU memory consumption. For example, in the original implementation, inputting ten 2048x2048 resolution images consumes over 40GB of memory, but using this option reduces consumption to around 10GB. This consumption is proportional to the number of images but does not vary with resolution. The trick is very simple and I will add some details in the future. If you input images larger than 1024x1024, I highly recommend you to use this option.
+The 'scalable' option is a powerful feature not included in the original paper. At the cost of some accuracy and computational expense, it enables normal and brdf estimation at any resolution with constant GPU memory consumption. For example, in the original implementation, inputting ten 2048x2048 resolution images consumes over 40GB of memory, but using this option reduces consumption to around 10GB. This consumption is proportional to the number of images but does not vary with resolution. The trick is very simple (Basically, it is a similar approach to the Scale-invariant spatial-light feature encoder). If you input images larger than 1024x1024, I highly recommend you to use this option.
 
 If you don't need to recover either of normal map or brdf maps, please use specific options as
 
