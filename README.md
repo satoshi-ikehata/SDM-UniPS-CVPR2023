@@ -14,8 +14,10 @@
 **Abstract:**
 SDM-UniPS is a Scalable, Mask-free, and Universal Photometric Stereo Network. This method can recover remarkably intricate surface normal maps, rivaling the quality of 3D scanners, even when images are captured under unknown, spatially-varying lighting conditions in uncontrolled environments. I provide not only a model for normal map estimation but also one for BRDF parameters (base color, roughness, and metallic), as shown in the appendix. Additionally, I offer the code for creating a video from frames rendered under novel directional light sources using both the normal and BRDF parameters.
 
-## 🚀 Steps to Get Started
+**What is Universal Photometric Stereo (UniPS)?**
+Unlike existing calibrated and uncalibrated photometric stereo tasks, which assume specific physical lighting models and therefore limit their usability, the solution algorithm of universal photometric stereo is designed to work for objects with diverse shapes and materials under arbitrary lighting variations, without assuming any specific models.
 
+## 🚀 Steps to Get Started
 ### Step 1: Install Dependencies
 Following instructions below.
 
