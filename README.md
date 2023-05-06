@@ -23,7 +23,7 @@ Following instructions below.
 Take multiple images under different arbitrary lighting conditions.
 <p align="center">
   <img src="./.images/input.png" width="400px">
-  <img src="./.images/tool.png" width="400px">
+  <img src="./.images/tools.png" width="400px">
 </p>
 
 ### Step 3: Run the Code
