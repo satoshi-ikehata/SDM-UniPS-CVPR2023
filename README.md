@@ -87,6 +87,7 @@ checkpoint
 
 ## Running the Test
 You can simply try the code using some datasets in my paper from [this link](https://www.dropbox.com/sh/afm4lkiz0iu1un3/AACfdKB66wl8iyFtJ4fzynGYa?dl=0).
+As an alternative option, you can also use the dataset of my past research, UniPS. [this link](https://satoshi-ikehata.github.io/cvpr2022/univps_cvpr2022.html)
 
 To run the test, execute `main.py` with the following command:
 
