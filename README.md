@@ -20,20 +20,20 @@ SDM-UniPS is a Scalable, Mask-free, and Universal Photometric Stereo Network. Th
 Following instructions below.
 
 ### Step 2: Image Acquisition
-Take multiple images under different arbitrary lighting conditions.
+Capture multiple images under various arbitrary lighting conditions. Unlike existing photometric stereo methods, there is no assumption of directional lighting. However, please ensure that there is sufficient shading variation in all parts of the images.
 <p align="center">
   <img src="./.images/input.png" width="400px">
   <img src="./.images/tools.png" width="400px">
 </p>
 
 ### Step 3: Run the Code
-Run main.py to recover the surface normal map and BRDF maps (base color, roughness, metallic)
+Run main.py to recover the surface normal map and BRDF parameter maps (base color, roughness, metallic).
 <p align="center">
   <img src="./.images/sample.png" width="800px">
 </p>
 
 ### Step 4: Novel Relighting
-Run relighting.py to render images under novel directional lightings based on recovered normal map and BRDF maps
+Run relighting.py to render images under novel directional lightings based on recovered normal map and BRDF parameter maps
 <p align="center">
   <img src="./.images/output.gif" width="400px">
 </p>
@@ -50,7 +50,7 @@ To successfully run the universal photometric stereo network, ensure that your s
 ## Tested Configurations
 The network has been successfully tested on the following configurations:
 
-- Ubuntu 20.04.5 and Windows 11, Python 3.11.3, PyTorch 2.0 with CUDA 11.8
+- Ubuntu 20.04.5 (WSL2) and Windows 11, Python 3.11.3, PyTorch 2.0 with CUDA 11.8
 - GPU: Nvidia RTX A6000 (48GB)
 
 ## Dataset Preparation
