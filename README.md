@@ -68,9 +68,9 @@ YOUR_DATA_PATH
 │   ├── [Prefix (default: "L")] imgfile2
 │   └── ...
 └── B (Suffix: default ".data")
-    ├── mask.png (optional)
-    ├── [Prefix (default: "L")] imgfile1
-    ├── [Prefix (default: "L")] imgfile2
+│   ├── mask.png (optional)
+.   ├── [Prefix (default: "L")] imgfile1
+.   ├── [Prefix (default: "L")] imgfile2
     └── ...
 ```
 
