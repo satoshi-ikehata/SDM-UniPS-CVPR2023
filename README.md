@@ -72,6 +72,9 @@ YOUR_DATA_PATH
     └── ...
 ```
 
+You can simply try the code using some datasets in my paper from [this link](https://www.dropbox.com/sh/afm4lkiz0iu1un3/AACfdKB66wl8iyFtJ4fzynGYa?dl=0).
+As an alternative option, you can also use the dataset of my past research, UniPS. [this link](https://satoshi-ikehata.github.io/cvpr2022/univps_cvpr2022.html).
+
 ## Download Pretrained Models
 Checkpoints of the network parameters for recovering both normal maps and BRDF maps are available [here](https://www.dropbox.com/s/yu8h6g0zp07mumd/checkpoint.zip?dl=0).
 
@@ -86,9 +89,6 @@ YOUR_CHECKPOINT_PATH
 ```
 
 ## Running the Test
-You can simply try the code using some datasets in my paper from [this link](https://www.dropbox.com/sh/afm4lkiz0iu1un3/AACfdKB66wl8iyFtJ4fzynGYa?dl=0).
-As an alternative option, you can also use the dataset of my past research, UniPS. [this link](https://satoshi-ikehata.github.io/cvpr2022/univps_cvpr2022.html).
-
 To run the test, execute `main.py` with the following command:
 
 ```
