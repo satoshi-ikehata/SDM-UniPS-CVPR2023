@@ -1,5 +1,5 @@
 
-## SDM-UniPS: Scalable, Detailed, and Mask-Free Universal Photometric Stereo (CVPR2023 Hightlight)
+## SDM-UniPS: Scalable, Detailed, and Mask-Free Universal Photometric Stereo (CVPR2023 Highlight)
 
 <p align="center">
   <img src="./.images/teaser2.jpg" width="800px">
@@ -19,7 +19,7 @@ Unlike existing calibrated and uncalibrated photometric stereo tasks, which assu
 
 ## 🚀 Steps to Get Started
 ### Step 1: Install Dependencies
-Following instructions below.
+Follow instructions below.
 
 ### Step 2: Image Acquisition
 Capture multiple images under various arbitrary lighting conditions with a fixed camera. Unlike existing photometric stereo methods, there is no assumption of directional lighting. However, please ensure that there is sufficient shading variation in all parts of the images. You can find tips for capture in the appendix of the paper.
@@ -62,12 +62,12 @@ Organize your test data as follows (prefix "L" and suffix ".data" can be modifie
 
 ```
 YOUR_DATA_PATH
-├── A (Suffix: default ".data")
+├── A [Suffix (default ".data")]
 │   ├── mask.png (optional)
 │   ├── [Prefix (default: "L")] imgfile1
 │   ├── [Prefix (default: "L")] imgfile2
 │   └── ...
-└── B (Suffix: default ".data")
+└── B [Suffix (default: ".data")]
 │   ├── mask.png (optional)
 .   ├── [Prefix (default: "L")] imgfile1
 .   ├── [Prefix (default: "L")] imgfile2
