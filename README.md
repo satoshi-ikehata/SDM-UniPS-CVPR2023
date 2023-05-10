@@ -28,7 +28,7 @@ Capture multiple images under various arbitrary lighting conditions with a fixed
   <img src="./.images/tools.png" width="400px">
 </p>
 
-An additional object mask is useful for cutting out the target object and hiding areas with weak shading variations. It also enhances reconstruction accuracy by providing a powerful cue to indicate boundary constraints to the network. Therefore, I recommend using the mask if your priority is reconstruction accuracy. While this repository does not support mask generation, you can find various public software tools to generate the foreground object mask. For example, Konstantin Sofiiuk's software "https://github.com/SamsungLabs/ritm_interactive_segmentation" only requires a few clicks to generate the foreground object mask.
+An additional object mask is useful for cutting out the target object and hiding areas with weak shading variations. It also enhances reconstruction accuracy by providing a powerful cue to indicate boundary constraints to the network. Therefore, I recommend using the mask if your priority is reconstruction accuracy. While this repository does not support mask generation, you can find various public software tools to generate the foreground object mask. For example, [Konstantin Sofiiuk's software](https://github.com/SamsungLabs/ritm_interactive_segmentation) only requires a few clicks to generate the foreground object mask.
 
 ### Step 3: Normal and BRDF Maps Recovery
 Run main.py to recover the surface normal map and/or BRDF parameter maps (base color, roughness, metallic).
@@ -78,6 +78,7 @@ YOUR_DATA_PATH
 
 You can simply try the code using some datasets in my paper from [this link](https://www.dropbox.com/sh/afm4lkiz0iu1un3/AACfdKB66wl8iyFtJ4fzynGYa?dl=0).
 As an alternative option, you can also use the dataset of my past research, UniPS. [this link](https://satoshi-ikehata.github.io/cvpr2022/univps_cvpr2022.html).
+To generate the object mask, you can simply use public softwares such as  [this link](https://github.com/SamsungLabs/ritm_interactive_segmentation)
 
 ## Download Pretrained Models
 Checkpoints of the network parameters for recovering both normal maps and BRDF maps are available [here](https://www.dropbox.com/s/yu8h6g0zp07mumd/checkpoint.zip?dl=0).
