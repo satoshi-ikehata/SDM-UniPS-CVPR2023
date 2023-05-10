@@ -28,6 +28,9 @@ Capture multiple images under various arbitrary lighting conditions with a fixed
   <img src="./.images/tools.png" width="400px">
 </p>
 
+## STEP 2.5: Mask Generation
+An additional object mask is useful for cutting out the target object and hiding areas with weak shading variations. It also enhances reconstruction accuracy by providing a powerful cue to indicate boundary constraints to the network. Therefore, I recommend using the mask if your priority is reconstruction accuracy. While this repository does not support mask generation, you can find various public software tools to generate the foreground object mask. For example, Konstantin Sofiiuk's software "https://github.com/SamsungLabs/ritm_interactive_segmentation" only requires a few clicks to generate the foreground object mask.
+
 ### Step 3: Normal and BRDF Maps Recovery
 Run main.py to recover the surface normal map and/or BRDF parameter maps (base color, roughness, metallic).
 <p align="center">
