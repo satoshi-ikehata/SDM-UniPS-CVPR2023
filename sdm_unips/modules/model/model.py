@@ -207,15 +207,10 @@ class Net(nn.Module):
         mode_change(self.regressor, False)
     
 
-    def forward(self, I, N, M, nImgArray, decoder_resolution, canonical_resolution):     
+    def forward(self, I, M, nImgArray, decoder_resolution, canonical_resolution):     
         
         decoder_resolution = decoder_resolution[0,0].cpu().numpy().astype(np.int32)
         canonical_resolution = canonical_resolution[0,0].cpu().numpy().astype(np.int32)
-
-        if torch.sum(N) > 0:
-            gt_available = True
-        else:
-            gt_available = False
 
         """init"""
         B, C, H, W, Nmax = I.shape
@@ -236,7 +231,6 @@ class Net(nn.Module):
         N_dec = []
 
         img = I.permute(0, 4, 1, 2, 3).to(self.device)
-        nml = N
         mask = M 
          
         decoder_imgsize = (decoder_resolution, decoder_resolution)
@@ -244,8 +238,7 @@ class Net(nn.Module):
         img = img[img_index==1, :, :, :]
         I_dec = F.interpolate(img, size=decoder_imgsize, mode='bilinear', align_corners=False)  
         M_dec = F.interpolate(mask, size=decoder_imgsize, mode='nearest')  
-        N_dec = F.interpolate(nml, size=decoder_imgsize, mode='bilinear', align_corners=False)  
-
+       
         C = img.shape[1]
         H = decoder_imgsize[0]
         W = decoder_imgsize[1]            
@@ -297,15 +290,9 @@ class Net(nn.Module):
         bout = bout.permute(0, 2, 1).reshape(B, 3, H, W)
         rout = rout.permute(0, 2, 1).reshape(B, 1, H, W)
         mout = mout.permute(0, 2, 1).reshape(B, 1, H, W)
-        mae, emap = angular_error(nout.cpu(), N_dec.cpu(), mask = M_dec.cpu())
-        if self.target == 'normal' and gt_available:
-            print(f"Mean angular error is {mae:.2f} degrees\n")
 
-        emap = emap.squeeze().detach()
-        thresh = 90
-        emap[emap>=thresh] = thresh
-        emap = emap/thresh
+
   
-        return mae, emap, nout, bout, rout, mout
+        return nout, bout, rout, mout
 
 

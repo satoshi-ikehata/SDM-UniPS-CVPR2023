@@ -99,6 +99,9 @@ class dataloader():
                         mask = mask[:, :, 0]
                     mask_flag = True
 
+                # Keep mask and normal of the original resolution
+                n_true = N
+
                 # Based on object mask, crop boudning rectangular area 
                 if  mask_flag == True:
                     rows, cols = np.nonzero(mask)
@@ -209,7 +212,7 @@ class dataloader():
         self.h = h
         self.w = w
         self.I = I
-        self.N = N
+        self.N = n_true
 
         self.roi = np.array([h0, w0, r_s, r_e, c_s, c_e])
         if self.use_mask == True:

@@ -10,6 +10,7 @@ import torch.nn.functional as F
 import numpy as np
 from modules.model import model, decompose_tensors
 from modules.model.model_utils import *
+from modules.utils import compute_mae
 import cv2
 import glob
 
@@ -76,30 +77,29 @@ class builder():
                     patches_I = decompose_tensors.divide_tensor_spatial(I.permute(0,4,1,2,3).reshape(-1, C, H, W), block_size=patch_size, method='tile_stride')
                     patches_I = patches_I.reshape(B, Nimg, -1, C, patch_size, patch_size).permute(0, 2, 3, 4, 5, 1)
                     sliding_blocks = patches_I.shape[1]
-                    patches_N = decompose_tensors.divide_tensor_spatial(N, block_size=patch_size, method='tile_stride')          
                     patches_M = decompose_tensors.divide_tensor_spatial(M, block_size=patch_size, method='tile_stride')
                     
                     patches_nml = []
                     patches_base = []
                     patches_rough = []
                     patches_metal = []
+
                     for k in range(sliding_blocks):
                         print(f"Recovering {self.args.target} map(s): {k+1} / {sliding_blocks}")
                         if torch.sum(patches_M[:, k, :, :, :]) > 0:
                             pI = patches_I[:, k, :, :, :,:]
                             pI = F.interpolate(pI.permute(0,4,1,2,3).reshape(-1, pI.shape[1],pI.shape[2],pI.shape[3]), size=(patch_size, patch_size), mode='bilinear', align_corners=True).reshape(B, Nimg, C, patch_size, patch_size).permute(0,2,3,4,1)
-                            pN = F.interpolate(patches_N[:, k, :, :, :], size=(patch_size, patch_size), mode='bilinear', align_corners=True)
                             pM = F.interpolate(patches_M[:, k, :, :, :], size=(patch_size, patch_size), mode='bilinear', align_corners=True)
                             nout = torch.zeros((B, 3, patch_size, patch_size))
                             bout = torch.zeros((B, 3, patch_size, patch_size))
                             rout = torch.zeros((B, 1, patch_size, patch_size))
                             mout = torch.zeros((B, 1, patch_size, patch_size))
                             if 'normal' in self.args.target:
-                                _, _, nout, _, _, _  = self.net_nml(pI, pN, pM, nImgArray.reshape(-1,1), decoder_resolution = patch_size * torch.ones(pI.shape[0],1), canonical_resolution=canonical_resolution* torch.ones(pI.shape[0],1))
+                                nout, _, _, _  = self.net_nml(pI, pM, nImgArray.reshape(-1,1), decoder_resolution = patch_size * torch.ones(pI.shape[0],1), canonical_resolution=canonical_resolution* torch.ones(pI.shape[0],1))
                                 nout = (F.interpolate(nout, size=(patch_size, patch_size), mode='bilinear', align_corners=True) * pM).cpu()
     
                             if 'brdf' in self.args.target:
-                                _, _, _, bout, rout, mout  = self.net_brdf(pI, pN, pM, nImgArray.reshape(-1,1), decoder_resolution = patch_size * torch.ones(pI.shape[0],1), canonical_resolution=canonical_resolution* torch.ones(pI.shape[0],1))
+                                _, bout, rout, mout  = self.net_brdf(pI, pM, nImgArray.reshape(-1,1), decoder_resolution = patch_size * torch.ones(pI.shape[0],1), canonical_resolution=canonical_resolution* torch.ones(pI.shape[0],1))
                                 bout = F.interpolate(bout, size=(patch_size, patch_size), mode='bilinear', align_corners=True).cpu()
                                 rout = F.interpolate(rout, size=(patch_size, patch_size), mode='bilinear', align_corners=True).cpu()
                                 mout = F.interpolate(mout, size=(patch_size, patch_size), mode='bilinear', align_corners=True).cpu()
@@ -127,12 +127,12 @@ class builder():
                 else:
                     print(f"Recovering {self.args.target} map(s) 1 / 1")
                     if 'normal' in self.args.target:
-                        _, _, nout, _, _, _  = self.net_nml(I, N, M, nImgArray.reshape(-1,1), decoder_resolution=testdata.data.h * torch.ones(I.shape[0],1), canonical_resolution=canonical_resolution* torch.ones(I.shape[0],1))
+                        nout, _, _, _  = self.net_nml(I, M, nImgArray.reshape(-1,1), decoder_resolution=testdata.data.h * torch.ones(I.shape[0],1), canonical_resolution=canonical_resolution* torch.ones(I.shape[0],1))
                         nml = (nout * M).squeeze().permute(1,2,0).cpu().detach()
                         del nout
                     
                     if 'brdf' in self.args.target:
-                        _, _, _, bout, rout, mout  = self.net_brdf(I, N, M, nImgArray.reshape(-1,1), decoder_resolution = testdata.data.h * torch.ones(I.shape[0],1), canonical_resolution=canonical_resolution* torch.ones(I.shape[0],1))
+                        _, bout, rout, mout  = self.net_brdf(I, M, nImgArray.reshape(-1,1), decoder_resolution = testdata.data.h * torch.ones(I.shape[0],1), canonical_resolution=canonical_resolution* torch.ones(I.shape[0],1))
                         base = (bout * M).squeeze().permute(1,2,0).cpu().detach()
                         rough = (rout * M).squeeze().cpu().detach()
                         metal = (mout * M).squeeze().cpu().detach()
@@ -140,15 +140,26 @@ class builder():
                 
                 # save normal of original resolution
                 if 'normal' in self.args.target:
-                    nml = cv2.resize(nml.cpu().numpy(), dsize=(c_e-c_s, r_e-r_s), interpolation=cv2.INTER_CUBIC)
+                    nml = nml.cpu().numpy()                
+                    nml = cv2.resize(nml, dsize=(c_e-c_s, r_e-r_s), interpolation=cv2.INTER_CUBIC)
                     mask = np.float32(np.abs(1 - np.sqrt(np.sum(nml * nml, axis=2))) < 0.5)
                     nml = np.divide(nml, np.linalg.norm(nml, axis=2, keepdims=True) + 1.0e-12)
-                    nml = 0.5 * (1 + nml)
                     nml = nml * mask[:, :, np.newaxis]
                     nout = np.zeros((h_, w_, 3), np.float32)
                     nout[r_s:r_e, c_s:c_e,:] = nml
-                    cv2.imwrite(f'{testdata.data.data_workspace}/normal.png', 255*nout[:,:,::-1])
+
+                    if torch.sum(N) > 0:
+                        n_true = N.permute(0,2,3,1).squeeze().cpu().numpy()
+                        mask = np.float32(np.abs(1 - np.sqrt(np.sum(n_true * n_true, axis=2))) < 0.5)
+                        mae, emap = compute_mae.compute_mae_np(nout, n_true, mask = mask)
+                        print(f"Mean Angular Error (MAE) is {mae:.3f}\n")                        
+                        emap = emap.squeeze()
+                        thresh = 90
+                        emap[emap>=thresh] = thresh
+                        emap = emap/thresh
+                        cv2.imwrite(f'{testdata.data.data_workspace}/error.png', 255*emap)     
                     
+                    cv2.imwrite(f'{testdata.data.data_workspace}/normal.png', 255*(0.5 * (1+nout[:,:,::-1])))                                      
 
                 if 'brdf' in self.args.target:
                     base = cv2.resize(base.cpu().numpy(), dsize=(c_e-c_s, r_e-r_s), interpolation=cv2.INTER_CUBIC)
