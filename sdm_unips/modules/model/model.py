@@ -209,8 +209,8 @@ class Net(nn.Module):
 
     def forward(self, I, M, nImgArray, decoder_resolution, canonical_resolution):     
         
-        decoder_resolution = decoder_resolution[0,0].cpu().numpy().astype(np.int32)
-        canonical_resolution = canonical_resolution[0,0].cpu().numpy().astype(np.int32)
+        decoder_resolution = decoder_resolution[0,0].cpu().numpy().astype(np.int32).item()
+        canonical_resolution = canonical_resolution[0,0].cpu().numpy().astype(np.int32).item()
 
         """init"""
         B, C, H, W, Nmax = I.shape
